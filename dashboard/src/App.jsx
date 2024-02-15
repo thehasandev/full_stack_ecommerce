@@ -8,7 +8,14 @@ function App() {
       userName: values.username,
       userEmail: values.useremail,
       userPassword: values.userpassword
-    })
+    }
+    ,
+    {
+      headers: {
+        Authorization : "asdfwerewrewrew"
+      }
+    }
+    )
 
   };
   const onFinishFailed = (errorInfo) => {
