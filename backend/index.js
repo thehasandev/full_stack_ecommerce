@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
+const route = require("./routes")
 
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
+app.use(route)
+
 
 app.listen(8000,()=>{
     console.log("Port is running");
