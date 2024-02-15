@@ -1,13 +1,10 @@
 const express = require('express')
 const _ = express.Router()
+const registrationController = require('../../controllers/registrationController')
 
-_.get("/ragistration",(req,res)=>{
-    res.send("Hi i am reagestraion Route")
-})
+_.get("/registration",registrationController)
 
-_.get("/login",(req,res)=>{
-    res.send("Hi i am Login Route")
-})
+
 
 
 
