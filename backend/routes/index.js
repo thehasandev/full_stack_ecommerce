@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require('express')
 const _ = express.Router()
 const apiRoutes = require("./api")
