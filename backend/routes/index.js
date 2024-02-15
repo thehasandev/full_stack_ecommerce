@@ -1,8 +1,10 @@
+require('dotenv').config()
 const express = require('express')
 const _ = express.Router()
 const apiRoutes = require("./api")
 
-const api = "/api/v1"
+const api = process.env.API_BASE_URL
+
 
 _.use(api,apiRoutes)
 
