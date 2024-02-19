@@ -5,9 +5,20 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    spacing: {
-      'container': '1400px'
-    }
+    extend: {
+      fontFamily: {
+        'roboto': ['Roboto'],
+        'pop': ['Poppins']
+      },
+      colors: {
+        'primary': '#081621',
+        'orange': '#EF4A23',
+      },
+      spacing: {
+        'container': '1400px'
+      }
+      
+    },
   },
   plugins: [],
 }
