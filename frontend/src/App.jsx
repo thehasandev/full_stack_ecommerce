@@ -1,10 +1,11 @@
 import React from 'react'
+import Container from './components/Container'
 
 function App() {
   return (
-    <div>
+    <Container>
       <h1>This is Tailwind</h1>
-    </div>
+    </Container>
   )
 }
 

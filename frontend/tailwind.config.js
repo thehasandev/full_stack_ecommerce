@@ -5,7 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-
+    spacing: {
+      'container': '1400px'
+    }
   },
   plugins: [],
 }
