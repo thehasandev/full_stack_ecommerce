@@ -8,7 +8,6 @@ function App() {
       <Flex>
       <h1>This is Tailwind</h1>
       <h1>This is Tailwind</h1>
-
       </Flex>
     </Container>
   )
