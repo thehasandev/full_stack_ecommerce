@@ -20,7 +20,7 @@ function Banner() {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 1500,
 
         appendDots: dots => (

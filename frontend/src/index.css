@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slick-dots ul li .btn{
+    font-size: 50px;
+    color: white;
+}
+
+.slick-dots ul li{
+   position: relative;
+   cursor: pointer;
+}
+.slick-dots ul li.slick-active {
+   position: relative;
+   top: 55px;
+   left: 0;
+   height: 14px;
+   width: 27px;
+   background: #EF5228;
+   border-radius: 2px;
+}
+
+.slick-dots ul li.slick-active .btn{
+   font-size: 0px;
+}
