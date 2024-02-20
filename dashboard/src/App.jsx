@@ -19,7 +19,7 @@ function App() {
         }
       }
     )
-    if (data.data == "Resistraion Sucessfull") {
+    if (data.data == "Registration Sucessfull") {
       toast.success(data.data)
     } else if (data.data == "This email is already used") {
       toast.error(data.data)
