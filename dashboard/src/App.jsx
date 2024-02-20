@@ -16,7 +16,7 @@ function App() {
       }
     }
     )
-
+    console.log(data);
   };
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
