@@ -1,6 +1,9 @@
 import React from 'react';
+
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const onFinish = async (values) => {
@@ -9,14 +12,19 @@ function App() {
       userEmail: values.useremail,
       userPassword: values.userpassword
     }
-    ,
-    {
-      headers: {
-        Authorization : "asdfwerewrewrew"
+      ,
+      {
+        headers: {
+          Authorization: "asdfwerewrewrew"
+        }
       }
-    }
     )
-    console.log(data);
+    if (data.data == "Resistraion Sucessfull") {
+      toast.success(data.data)
+    } else if (data.data == "This email is already used") {
+      toast.error(data.data)
+    }
+
   };
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
@@ -24,6 +32,19 @@ function App() {
 
   return (
     <div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+
       <Form
         name="basic"
         labelCol={{
