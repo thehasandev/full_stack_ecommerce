@@ -4,8 +4,10 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
 
 function App() {
+
   const onFinish = async (values) => {
     const data = await axios.post("http://localhost:8000/api/v1/auth/registration", {
       userName: values.username,
@@ -19,13 +21,17 @@ function App() {
         }
       }
     )
-    if (data.data == "Registration Sucessfull") {
-      toast.success(data.data)
-    } else if (data.data == "This email is already used") {
-      toast.error(data.data)
+   
+    if (data.data.error == "Registration Sucessfull") {
+      toast.success(data.data.error)
+    } else if (data.data.error == "This email is already used") {
+      toast.error(data.data.error)
+    }else if(data.data.error == "Password have must 1 to 6"){
+      toast.error(data.data.error)
     }
 
   };
+
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
