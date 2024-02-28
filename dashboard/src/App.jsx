@@ -28,6 +28,8 @@ function App() {
       toast.error(data.data.error)
     }else if(data.data.error == "Password have must 1 to 6"){
       toast.error(data.data.error)
+    }else if(data.data.error == "Please enter a valid email"){
+      toast.error(data.data.error)
     }
 
   };
