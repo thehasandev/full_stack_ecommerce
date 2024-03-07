@@ -13,7 +13,13 @@ const registrationSchema = new Schema({
     userPassword: {
         type: String,
         require: true
-    }
+    },
+    role : {
+        type: String,
+        enum: ["user","merchent","admin"],
+        default: "user"
+    },
+    otp : String
 })
 
 module.exports = mongoose.model("items",registrationSchema)
