@@ -3,6 +3,7 @@ const emailValidator = require("../helpers/emailValidator");
 const passwordValidator = require("../helpers/passwordValidator");
 const RegistrationSchema = require("../model/registrationSchema")
 const bcrypt = require('bcrypt');
+const otpGenerator = require('otp-generator')
 
 
 const registrationController = async (req, res) => {
@@ -22,13 +23,17 @@ const registrationController = async (req, res) => {
   else {
     bcrypt.hash(userPassword, 10, async function (err, hash) {
       const exjectionUser = await RegistrationSchema.find({ userEmail })
+    
+      const otp =  otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false,lowerCaseAlphabets :false });
+     
       if (exjectionUser.length > 0) {
         res.send({ "error": "This email is already used" })
       } else {
         const data = new RegistrationSchema({
           userName,
           userEmail,
-          userPassword: hash
+          userPassword: hash,
+          otp : otp
         })
         data.save()
         res.send({ "error": "Registration Sucessfull" })
