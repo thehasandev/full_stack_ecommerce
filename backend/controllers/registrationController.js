@@ -1,9 +1,12 @@
 const balnkInputValidator = require("../helpers/blankInputValidator");
 const emailValidator = require("../helpers/emailValidator");
+const nodemailerValidator = require("../helpers/nodemailerValidator");
 const passwordValidator = require("../helpers/passwordValidator");
 const RegistrationSchema = require("../model/registrationSchema")
 const bcrypt = require('bcrypt');
 const otpGenerator = require('otp-generator')
+
+
 
 
 const registrationController = async (req, res) => {
@@ -29,6 +32,9 @@ const registrationController = async (req, res) => {
       if (exjectionUser.length > 0) {
         res.send({ "error": "This email is already used" })
       } else {
+
+        nodemailerValidator(userEmail,otp)
+        
         const data = new RegistrationSchema({
           userName,
           userEmail,
