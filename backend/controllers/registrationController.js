@@ -42,7 +42,7 @@ const registrationController = async (req, res) => {
           otp : otp
         })
         data.save()
-        res.send({ "error": "Registration Sucessfull" })
+        res.send({ "sucess": "Registration Sucessfull" })
       }
 
     });

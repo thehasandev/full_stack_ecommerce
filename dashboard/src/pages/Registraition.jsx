@@ -18,16 +18,18 @@ function Registraition() {
         },
       }
     );
-    console.log(data);
-    if (data.data.error == "Registration Sucessfull") {
-      toast.success(data.data.error);
-    } else if (data.data.error == "This email is already used") {
-      toast.error(data.data.error);
-    } else if (data.data.error == "Password have must 1 to 6") {
-      toast.error(data.data.error);
-    } else if (data.data.error == "Please enter a valid email") {
-      toast.error(data.data.error);
-    }
+
+   if(data.data.sucess){
+    toast.success(data.data.sucess)
+   }
+   if(data.data.error){
+    toast.error(data.data.error)
+   }
+
+   console.log(data);
+   
+   
+    
   };
 
   const onFinishFailed = (errorInfo) => {
