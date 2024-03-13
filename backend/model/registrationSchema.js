@@ -19,7 +19,13 @@ const registrationSchema = new Schema({
         enum: ["user","merchent","admin"],
         default: "user"
     },
-    otp : String
+    otp : {
+        type : String
+    },
+    emailVerified: {
+        type: Boolean,
+        default: false
+    }
 })
 
 module.exports = mongoose.model("items",registrationSchema)
