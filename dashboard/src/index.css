@@ -1,0 +1,14 @@
+.registaition{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.registaition .from{
+width: 550px;
+}
+
+.registaition .from h1{
+    text-align: center;
+    text-transform: uppercase;
+}
