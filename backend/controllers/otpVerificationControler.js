@@ -6,9 +6,10 @@ const otpVerificationControler  =async(req,res)=>{
 
   const findEmail = await RegistrationUsers.findOne({userEmail : email})
   
- if(findEmail){
-    if(findEmail.otp == otp){
-       await RegistrationUsers.findOneAndUpdate({userEmail : email},{otp:""})
+ if(!findEmail.emailVerified && findEmail){
+   
+   if(findEmail.otp == otp){
+       await RegistrationUsers.findOneAndUpdate({userEmail : email},{otp:"",emailVerified:true})
        res.send({"sucess":"Verification Sucessfull"})
     }else{
         res.send({"error":"Otp Not Match"})

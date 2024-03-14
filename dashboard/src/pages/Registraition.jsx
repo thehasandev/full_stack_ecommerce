@@ -2,8 +2,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Button, Form, Input } from "antd";
 import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function Registraition() {
+  const navigate =useNavigate()
   const onFinish = async (values) => {
     const data = await axios.post(
       "http://localhost:8000/api/v1/auth/registration",
@@ -21,6 +23,7 @@ function Registraition() {
 
    if(data.data.sucess){
     toast.success(data.data.sucess)
+    navigate(`/otp-varification/${values.useremail}`)
    }
    if(data.data.error){
     toast.error(data.data.error)

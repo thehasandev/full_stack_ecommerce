@@ -1,8 +1,12 @@
 import { Button, Form, Input } from "antd";
+import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 function OtpVarification() {
+  const peram = useParams()
+  const navigate = useNavigate()
   const onFinish = async (values) => {
+    console.log(values.otp);
     try {
       const response = await fetch(
         "http://localhost:8000/api/v1/auth/otpverification",
@@ -12,7 +16,7 @@ function OtpVarification() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email: values.email,
+            email: peram.email,
             otp: values.otp,
           }),
         }
@@ -28,13 +32,14 @@ function OtpVarification() {
       }
       if(data.sucess){
         toast.success(data.sucess)
+        navigate("/login")
        }
 
     } catch (error) {
       console.log("error", error);
     }
   };
-
+  
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
@@ -61,19 +66,6 @@ function OtpVarification() {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              {
-                required: true,
-                message: "Please input your email!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
           <Form.Item
             label="Otp"
             name="otp"

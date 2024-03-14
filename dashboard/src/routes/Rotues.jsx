@@ -5,15 +5,15 @@ import OtpVarification from "../pages/OtpVarification";
 
 const Rotues = createBrowserRouter([
   {
-    path: "/sing-up",
+    path: "/",
     element: <Registraition />,
   },
   {
-    path: "/log-in",
+    path: "/login",
     element: <Login />,
   },
   {
-    path: "/otp-varification",
+    path: "/otp-varification/:email",
     element: <OtpVarification />,
   },
 
