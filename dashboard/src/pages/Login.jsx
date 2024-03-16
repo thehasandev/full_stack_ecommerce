@@ -1,9 +1,44 @@
 import { Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 function Login() {
+  const navigate = useNavigate();
   const onFinish = async (values) => {
-    console.log(values);
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: values.useremail,
+          password: values.userpassword,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Cound Not Feactch Api");
+      }
+
+      const data = await response.json();
+
+   
+
+      if (data.error) {
+        toast.error(data.error);
+      } else if (!data.isEmailverified) {
+        toast.error("Please Verify Your Email");
+      } else if (data.role == "user") {
+        toast.error(
+          "You don't permet go to Home page .You must will have admin or marcent"
+        );
+      } else {
+        navigate("/home");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -72,6 +107,18 @@ function Login() {
           </Form.Item>
         </Form>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </section>
   );
 }

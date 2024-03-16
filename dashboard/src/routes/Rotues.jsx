@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import OtpVarification from "../pages/OtpVarification";
 import ForgotPassword from "../pages/ForgotPassword";
 import ChangePassword from "../pages/ChangePassword";
+import Home from "../pages/Home";
 
 const Rotues = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const Rotues = createBrowserRouter([
   {
     path: "/change-password/:token",
     element: <ChangePassword />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
   },
 
 ]);
