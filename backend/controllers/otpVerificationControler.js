@@ -2,13 +2,12 @@ const RegistrationUsers = require("../model/registrationSchema")
 
 const otpVerificationControler  =async(req,res)=>{
   const {email,otp} = req.body
-  
 
   const findEmail = await RegistrationUsers.findOne({userEmail : email})
   
- if(!findEmail.emailVerified && findEmail){
-   
-   if(findEmail.otp == otp){
+ if(findEmail){
+
+   if( !findEmail.emailVerified && findEmail.otp == otp){
        await RegistrationUsers.findOneAndUpdate({userEmail : email},{otp:"",emailVerified:true})
        res.send({"sucess":"Verification Sucessfull"})
     }else{

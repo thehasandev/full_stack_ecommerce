@@ -1,18 +1,43 @@
 import { Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
-
-function Login() {
+import { ToastContainer, toast } from "react-toastify";
+function ForgotPassword() {
   const onFinish = async (values) => {
-    console.log(values);
-  };
+    try {
+      const response = await fetch(
+        "http://localhost:8000/api/v1/auth/forgotpassword",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: values.useremail,
+          }),
+        }
+      );
 
+      if (!response.ok) {
+        throw new Error(`Api is not found`);
+      }
+      const data = await response.json();
+     
+      if(data.error){
+        toast.error(data.error)
+      }
+      if(data.sucess){
+        toast.success(data.sucess)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
   return (
     <section className="registaition">
       <div className="from">
-        <h1>Log In</h1>
+        <h1>Forgot</h1>
         <Form
           name="basic"
           labelCol={{
@@ -43,20 +68,6 @@ function Login() {
           >
             <Input />
           </Form.Item>
-
-          <Form.Item
-            label="Password"
-            name="userpassword"
-            rules={[
-              {
-                required: true,
-                message: "Please input your password!",
-              },
-            ]}
-          >
-            <Input.Password />
-          </Form.Item>
-
           <Form.Item
             wrapperCol={{
               offset: 8,
@@ -64,16 +75,25 @@ function Login() {
             }}
           >
             <Button type="primary" htmlType="submit">
-              Log In
+              Find Email
             </Button>
-            <Link to="/forgot-password">
-              <p> Forgot Password </p>
-            </Link>
           </Form.Item>
         </Form>
       </div>
+      <ToastContainer
+          position="bottom-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
     </section>
   );
 }
 
-export default Login;
+export default ForgotPassword;

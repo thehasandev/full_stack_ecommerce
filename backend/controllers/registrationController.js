@@ -33,7 +33,7 @@ const registrationController = async (req, res) => {
         res.send({ "error": "This email is already used" })
       } else {
 
-        nodemailerValidator(userEmail,otp)
+        nodemailerValidator(userEmail,"Email Verification",`<h3>Please verification your email</h3> </br> <h3>Otp : ${otp}</h3>`)
         
         const data = new RegistrationSchema({
           userName,
