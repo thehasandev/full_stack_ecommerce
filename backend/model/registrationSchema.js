@@ -28,4 +28,4 @@ const registrationSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model("items",registrationSchema)
+module.exports = mongoose.model("users",registrationSchema)
