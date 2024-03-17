@@ -23,7 +23,7 @@ function Login() {
 
       const data = await response.json();
 
-   
+      
 
       if (data.error) {
         toast.error(data.error);
@@ -35,6 +35,7 @@ function Login() {
         );
       } else {
         navigate("/home");
+        localStorage.setItem("user",JSON.stringify(data))
       }
     } catch (error) {
       console.log(error);

@@ -13,10 +13,4 @@ _.post("/forgotpassword",forgotPasswordControler)
 _.post("/changepassword",changePasswordControler)
 _.post("/login",loginControler)
 
-
-
-
-
-
-
 module.exports = _
