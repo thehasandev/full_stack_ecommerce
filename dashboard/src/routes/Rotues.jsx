@@ -8,6 +8,8 @@ import ChangePassword from "../pages/ChangePassword";
 import Rootlayouts from "../components/Rootlayouts";
 import CreateCategori from "../pages/CreateCategori";
 import CreateSubCategori from "../pages/CreateSubCategori";
+import ViewCategori from "../pages/ViewCategori";
+import ViewSubCategori from "../pages/ViewSubCategori";
 
 const Rotues = createBrowserRouter([
   {
@@ -42,6 +44,14 @@ const Rotues = createBrowserRouter([
         path: "/dashboard/createsubcategori",
         element: <CreateSubCategori />,
       },
+      {
+        path: "/dashboard/viewcategori",
+        element: <ViewCategori />,
+      },
+      {
+        path: "/dashboard/viewsubcategori",
+        element: <ViewSubCategori />,
+      }
     ],
   },
 ]);
