@@ -51,11 +51,9 @@ const Rotues = createBrowserRouter([
       {
         path: "/dashboard/viewsubcategori",
         element: <ViewSubCategori />,
-      }
+      },
     ],
   },
 ]);
-
-
 
 export default Rotues;
