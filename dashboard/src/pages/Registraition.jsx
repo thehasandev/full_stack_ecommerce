@@ -41,7 +41,7 @@ function Registraition() {
   return (
     <section className="registaition">
       <div className="from">
-        <h1>Registraition</h1>
+        <h1>Sing Up</h1>
         <Form
           name="basic"
           labelCol={{
@@ -105,7 +105,7 @@ function Registraition() {
               span: 16,
             }}
           >
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" style={{width:"100%"}} htmlType="submit">
               Sing Up
             </Button>
           </Form.Item>
@@ -123,6 +123,7 @@ function Registraition() {
           theme="dark"
         />
       </div>
+      
     </section>
   );
 }

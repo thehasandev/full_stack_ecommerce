@@ -1,9 +1,11 @@
 import { Button, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-
+import { useDispatch } from 'react-redux'
+import { activeuser } from "../slice/usersSlice";
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const onFinish = async (values) => {
     try {
       const response = await fetch("http://localhost:8000/api/v1/auth/login", {
@@ -35,6 +37,7 @@ function Login() {
         );
       } else {
         navigate("/home");
+        dispatch(activeuser(data))
         localStorage.setItem("user",JSON.stringify(data))
       }
     } catch (error) {
