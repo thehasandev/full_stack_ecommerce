@@ -36,7 +36,7 @@ function Login() {
           "You don't permet go to Home page .You must will have admin or marcent"
         );
       } else {
-        navigate("/home");
+        navigate("/dashboard");
         dispatch(activeuser(data))
         localStorage.setItem("user",JSON.stringify(data))
       }
