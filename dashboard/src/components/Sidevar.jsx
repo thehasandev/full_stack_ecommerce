@@ -1,15 +1,10 @@
-import {
-    UserOutlined ,
-    SettingOutlined,
-    DesktopOutlined,
-    FundProjectionScreenOutlined
-  } from "@ant-design/icons";
-  
-  import { Menu } from "antd";
-  
+import {UserOutlined ,SettingOutlined,DesktopOutlined,FundProjectionScreenOutlined} from "@ant-design/icons";
+import { Menu } from "antd";
+import { useNavigate } from "react-router-dom";
+
   function Sidevar() {
     const user = JSON.parse(localStorage.getItem("user")) 
-   
+    const navigate =useNavigate()
     function getItem(label, key, icon, children, type) {
       return {
         key,
@@ -51,7 +46,7 @@ import {
       
     ];
     const onClick = (e) => {
-      console.log("click ", e);
+      navigate(e.key)
     };
     return (
       <Menu
