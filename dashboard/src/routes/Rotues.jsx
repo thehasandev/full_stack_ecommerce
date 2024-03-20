@@ -5,6 +5,8 @@ import OtpVarification from "../pages/OtpVarification";
 import ForgotPassword from "../pages/ForgotPassword";
 import ChangePassword from "../pages/ChangePassword";
 import Home from "../pages/Home";
+import Sidevar from "../components/Sidevar";
+import Rootlayouts from "../components/Rootlayouts";
 
 const Rotues = createBrowserRouter([
   {
@@ -29,9 +31,16 @@ const Rotues = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home />,
+    element: <Rootlayouts />,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+    ],
   },
-
 ]);
+
+
 
 export default Rotues;
