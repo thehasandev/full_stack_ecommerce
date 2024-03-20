@@ -34,7 +34,7 @@ import { useNavigate } from "react-router-dom";
       getItem("Category & SubCategory", "sub3", <FundProjectionScreenOutlined />, [
         getItem("Add Category", "/dashboard/createcategori"),
         getItem("View Catergory", "6"),
-        getItem("Add Subcategory", "7"),
+        getItem("Add Subcategory", "/dashboard/createsubcategori"),
         getItem("View Subcatergory", "8"),
       ]),
   

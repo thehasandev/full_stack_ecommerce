@@ -14,13 +14,14 @@ function CreateCategori() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name: values.categori.toLowerCase(),
+            name: values.categori,
             ownerId: ownerId,
           }),
         }
       );
 
       const data = await response.json();
+    
       if (!response.ok) {
         throw new Error("Could not fetch Api");
       }
@@ -63,12 +64,6 @@ function CreateCategori() {
           <Form.Item
             label="Categoris Name"
             name="categori"
-            rules={[
-              {
-                required: true,
-                message: "Please input your userEmail!",
-              },
-            ]}
           >
             <Input />
           </Form.Item>
