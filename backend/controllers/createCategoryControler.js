@@ -15,7 +15,7 @@ const createCategoryControler =async(req,res)=>{
     })  
     
     addCategoris.save()
-    res.send({sucess:"Create categoris"})
+    res.send({sucess:"Create a new categori"})
   }
 }
 
