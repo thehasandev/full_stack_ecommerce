@@ -7,9 +7,9 @@ const createSubCategoriControler =async(req,res)=>{
   
   if(findname){
     res.send({error:"This Subcategory is already in exjected"})
-  }else if(balnkInputValidator(name)){
+  }else if(balnkInputValidator(!name)){
     res.send({"error": "Sub Categori is requied"})
-  }else if(balnkInputValidator(categoriId)){
+  }else if(balnkInputValidator(!categoriId)){
     res.send({"error": "Categoris is requied"})
   }else{
     const addSubCategoris = new SubCategory({

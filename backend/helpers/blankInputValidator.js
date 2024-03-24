@@ -1,5 +1,5 @@
 const balnkInputValidator =(text)=>{
-  if(!text){
+  if(text){
     return true
   }else{
     return false

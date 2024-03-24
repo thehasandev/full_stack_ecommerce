@@ -8,9 +8,9 @@ const createCategoryControler =async(req,res)=>{
   
 
   if(findname){
-    res.send({error:"This category is already in exjected"})
-  }else if(balnkInputValidator(name)){
-    res.send({error:"Categoris name is requied"})
+    res.send({"error":"This category is already in exjected"})
+  }else if(balnkInputValidator(!name)){
+    res.send({"error":"Categoris name is requied"})
   }else{
     {
       const addCategoris = new Categoris({
