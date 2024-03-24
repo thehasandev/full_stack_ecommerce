@@ -3,6 +3,7 @@ const ProductSchema = require("../model/productSchema");
 const createProductController = async (req, res) => {
   const { name, description, image, price } = req.body;
   const exjectinName = await ProductSchema.findOne({ name: name });
+  
   if (exjectinName) {
     res.send({ error: "This product is already added" });
   } else {
@@ -16,10 +17,10 @@ const createProductController = async (req, res) => {
       res.send({ error: "Product image is required" });
     } else {
       const product = new ProductSchema({
-        name,
-        description,
-        image,
-        price,
+        name: name,
+        description: description,
+        image: image,
+        price: price,
       });
       product.save();
       res.send({ sucess: "Prduct Created" });
