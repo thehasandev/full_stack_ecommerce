@@ -10,6 +10,7 @@ import CreateCategori from "../pages/CreateCategori";
 import CreateSubCategori from "../pages/CreateSubCategori";
 import ViewCategori from "../pages/ViewCategori";
 import ViewSubCategori from "../pages/ViewSubCategori";
+import CreateProduct from "../pages/CreateProduct";
 
 const Rotues = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const Rotues = createBrowserRouter([
         path: "/dashboard/viewsubcategori",
         element: <ViewSubCategori />,
       },
+      {
+        path: "/dashboard/createproduct",
+        element: <CreateProduct />,
+      }
     ],
   },
 ]);

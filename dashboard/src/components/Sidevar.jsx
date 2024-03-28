@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
       ]),
   
       getItem("Product", "sub2", <DesktopOutlined />, [
-        getItem("Add Product", "3"),
+        getItem("Add Product", "/dashboard/createproduct"),
         getItem("View Product", "4"),
   
       ]),
