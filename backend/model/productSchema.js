@@ -10,11 +10,17 @@ const productSchema = new Schema({
     discription: {
         type: String,
     },
-    price :{
+    salePrice :{
+        type : String
+    },
+    ragulerPrice :{
         type : String
     },
     image: {
         type: Object,
+    },
+    slug :{
+        type : String
     }
 })
 
