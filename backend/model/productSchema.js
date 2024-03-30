@@ -9,15 +9,18 @@ const productSchema = new Schema({
     },
     discription: {
         type: String,
+        require: true,
     },
     salePrice :{
-        type : String
+        type : String,
+        require: true,
     },
     ragulerPrice :{
         type : String
     },
     image: {
         type: Object,
+        require: true,
     },
     slug :{
         type : String

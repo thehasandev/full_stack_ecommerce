@@ -5,6 +5,7 @@ const createSubCategoriControler = require('../../controllers/createSubCategoriC
 const allSubcategorisControler = require('../../controllers/allsubcategorisControler')
 const createProductController = require('../../controllers/createProductControler')
 const multer  = require('multer')
+const allProductController = require('../../controllers/allProductControler')
 
 const _ = express.Router()
 
@@ -17,14 +18,14 @@ const storage = multer.diskStorage({
       cb(null, + '-' + uniqueSuffix+file.originalname )
     }
   })
-  
-  const upload = multer({ storage: storage })
+const upload = multer({ storage: storage })
 
 _.post("/createcategory",createCategoryControler)
 _.post("/createsubcategory",createSubCategoriControler)
 _.get("/allcategory",allcategorisControler)
 _.get("/allsubcategory",allSubcategorisControler)
 _.post("/createproduct",upload.single('avatar'),createProductController)
+_.get("/allproduct",allProductController)
 
 
 module.exports = _

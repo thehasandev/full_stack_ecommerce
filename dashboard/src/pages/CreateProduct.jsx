@@ -19,7 +19,6 @@ function CreateProduct() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const datas = await axios.post(
       "http://localhost:8000/api/v1/product/createproduct",
       {
