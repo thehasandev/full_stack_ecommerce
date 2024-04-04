@@ -6,6 +6,7 @@ const allSubcategorisControler = require('../../controllers/allsubcategorisContr
 const createProductController = require('../../controllers/createProductControler')
 const multer  = require('multer')
 const allProductController = require('../../controllers/allProductControler')
+const addVarientControler = require('../../controllers/addvarientControler')
 
 const _ = express.Router()
 
@@ -25,6 +26,7 @@ _.post("/createsubcategory",createSubCategoriControler)
 _.get("/allcategory",allcategorisControler)
 _.get("/allsubcategory",allSubcategorisControler)
 _.post("/createproduct",upload.single('avatar'),createProductController)
+_.post("/addvarient",upload.single('avatar'),addVarientControler)
 _.get("/allproduct",allProductController)
 
 

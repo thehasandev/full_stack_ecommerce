@@ -24,6 +24,7 @@ import { useNavigate } from "react-router-dom";
       getItem("Product", "sub2", <DesktopOutlined />, [
         getItem("Add Product", "/dashboard/createproduct"),
         getItem("View Product", "/dashboard/viewproduct"),
+        getItem("Add Varient", "/dashboard/addvarient"),
   
       ]),
   
