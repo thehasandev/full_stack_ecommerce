@@ -47,7 +47,11 @@ useEffect(()=>{
         },
       }
     );
-   console.log(datas);
+   if(datas.data.error){
+    toast.error(datas.data.error)
+   }else if(datas.data.sucess){
+    toast.success(datas.data.sucess)
+   }
   };
 
 
