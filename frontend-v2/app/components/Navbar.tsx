@@ -1,6 +1,6 @@
 import Container from "./Container";
-import Image from "./Image";
-import Logo from "../assets/logo.png";
+import Image from "next/image";
+import Logo from "../../public/assets/logo.png";
 import Flex from "./Flex";
 
 import { HiMiniUser } from "react-icons/hi2";
@@ -13,7 +13,7 @@ function Navbar() {
         <Container>
           <Flex className="items-center justify-between">
             <div className="w-32">
-              <Image src={Logo} />
+              <Image src={Logo} alt="logo" />
             </div>
 
             <div className="w-[500px]">
