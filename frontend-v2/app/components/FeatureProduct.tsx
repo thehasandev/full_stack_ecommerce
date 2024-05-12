@@ -1,6 +1,7 @@
-import Product from "../Product";
-import Container from "../Container";
-import Flex from "../Flex";
+import React from "react";
+import Product from "./Product";
+import Container from "./Container";
+import Flex from "./Flex";
 
 function FeatureProduct() {
   return (

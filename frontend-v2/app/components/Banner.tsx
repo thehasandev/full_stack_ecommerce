@@ -48,10 +48,10 @@ function Banner() {
                 <Image src={SlideTwo} alt="slide two" className="w-full" />
               </div>
               <div>
-                <Image src={SlideThree} className="w-full" />
+                <Image src={SlideThree} alt="slide four" className="w-full" />
               </div>
               <div>
-                <Image src={SlideFour} className="w-full" />
+                <Image src={SlideFour} alt="slide six" className="w-full" />
               </div>
             </Slider>
           </div>
