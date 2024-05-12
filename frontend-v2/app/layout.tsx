@@ -23,6 +23,7 @@ export default function RootLayout({
         <DesktopNav />
         {children}
         <Footer />
+        
       </body>
     </html>
   );
