@@ -55,7 +55,7 @@ function ViewProduct() {
       title: "Image",
       dataIndex: "Image",
       key: "Image",
-      render: (_, record) => (
+      render: (_) => (
         <Space size="middle">
          <img style={{width: "100px"}} src={`http://localhost:8000${_}`} alt="" />
         </Space>
@@ -84,7 +84,7 @@ function ViewProduct() {
     {
       title: "Action",
       key: "action",
-      render: (_, record) => (
+      render: () => (
         <Space size="middle">
           <a>Edit</a>
           <a>Delete</a>

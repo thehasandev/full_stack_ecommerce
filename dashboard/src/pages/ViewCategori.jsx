@@ -16,10 +16,12 @@ function ViewCategori() {
       const arr = [];
       const data = await response.json();
 
-      data.map((item) => {
+      data.map((item, index) => {
         arr.push({
           key: item._id,
+          id: index + 1,
           name: item.name,
+          image: item.image,
         });
       });
       setCategori(arr);
@@ -30,15 +32,36 @@ function ViewCategori() {
   datafetch();
   const columns = [
     {
+      title: "Id",
+      dataIndex: "id",
+      key: "id",
+      render: (_) => <a>{_}</a>,
+    },
+    {
       title: "Name",
       dataIndex: "name",
       key: "name",
       render: (text) => <a>{text}</a>,
     },
     {
+      title: "Image",
+      dataIndex: "image",
+      key: "image",
+      render: (_) => (
+        <Space size="middle">
+          <img
+            style={{ width: "100px" }}
+            src={`http://localhost:8000${_}`}
+            alt=""
+          />
+        </Space>
+      ),
+    },
+
+    {
       title: "Action",
       key: "action",
-      render: (_) => (
+      render: () => (
         <Space size="middle">
           <a>Edit</a>
           <a>Delete</a>
