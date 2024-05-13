@@ -1,3 +1,4 @@
+"use client";
 import Container from "./Container";
 import Image from "next/image";
 import Logo from "../../public/assets/logo.png";
@@ -5,6 +6,49 @@ import Flex from "./Flex";
 
 import { HiMiniUser } from "react-icons/hi2";
 import { IoSearchSharp } from "react-icons/io5";
+import Link from "next/link";
+const _links = [
+  {
+    name: "Desktop",
+    href: "desktop",
+  },
+  {
+    name: "Laptop",
+    href: "laptop",
+  },
+  {
+    name: "Component",
+    href: "component",
+  },
+  {
+    name: "Monitor",
+    href: "monitor",
+  },
+  {
+    name: "UPS",
+    href: "uPS",
+  },
+  {
+    name: "Phone",
+    href: "phone",
+  },
+  {
+    name: "Tablet",
+    href: "tablet",
+  },
+  {
+    name: "Office Equipment",
+    href: "office Equipment",
+  },
+  {
+    name: "Security",
+    href: "security",
+  },
+  {
+    name: "Networking",
+    href: "networking",
+  },
+];
 
 function Navbar() {
   return (
@@ -64,57 +108,14 @@ function Navbar() {
       <nav className="bg-slate-100 py-2">
         <Container>
           <ul className="flex justify-between items-center">
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Desktop
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Laptop
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Component
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Monitor
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              UPS
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Phone
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Tablet
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Office Equipment
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Camera
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Security
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Networking
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Software
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Server & Storage
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Accessories
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Gadget
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              TV
-            </li>
-            <li className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange">
-              Appliance
-            </li>
+            {_links.map((item, index) => (
+              <li
+                key={index}
+                className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange"
+              >
+                <Link href={item.href}>{item.name}</Link>
+              </li>
+            ))}
           </ul>
         </Container>
       </nav>
