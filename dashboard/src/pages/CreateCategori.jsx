@@ -1,85 +1,71 @@
-import { Button, Form, Input } from "antd";
+import axios from "axios";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 function CreateCategori() {
+  const [name, setName] = useState("");
   const ownerId = useSelector((state) => state.activeuser.value.id);
+  const [image, setImage] = useState({});
 
-  const onFinish = async (values) => {
+  const handleChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      const response = await fetch(
+      const response = await axios.post(
         "http://localhost:8000/api/v1/product/createcategory",
         {
-          method: "POST",
+          name: name,
+          ownerId: ownerId,
+          avatar: image,
+        },
+        {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
           },
-          body: JSON.stringify({
-            name: values.categori,
-            ownerId: ownerId,
-          }),
         }
       );
-
-      const data = await response.json();
-    
-      if (!response.ok) {
-        throw new Error("Could not fetch Api");
+      if (response.data.sucess) {
+        toast(response.data.sucess);
+      } else if (response.data.error) {
+        toast(response.data.error);
       }
-      if(data.sucess){
-        toast.success(data.sucess)
-      }else if(data.error){
-        toast.error(data.error)
-      }
-     
     } catch (error) {
-      console.log(error);
+      console.error("Error:", error.message);
     }
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
   return (
     <section className="createcategoris">
-      <div className="from">
+      <form onSubmit={handleSubmit}>
         <h1>Create Categori</h1>
-        <Form
-          name="basic"
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 16,
-          }}
-          style={{
-            maxWidth: 800,
-          }}
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
-        >
-          <Form.Item
-            label="Categoris Name"
-            name="categori"
-          >
-            <Input />
-          </Form.Item>
+        <div style={{ marginBottom: "10px" }}>
+          <label>Name*</label>
+          <br />
+          <input
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+            required
+            style={{ width: "100%", padding: "4px", marginTop: "5px" }}
+          />
+        </div>
 
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
-            <Button type="primary" htmlType="submit">
-              Create Categori
-            </Button>
-          </Form.Item>
-        </Form>
-      </div>
+        <div style={{ marginBottom: "10px" }}>
+          <label>Image*</label>
+          <br />
+          <input
+            type="file"
+            onChange={handleChange}
+            required
+            style={{ width: "100%", padding: "4px", marginTop: "5px" }}
+          />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+
       <ToastContainer
         position="bottom-center"
         autoClose={2000}

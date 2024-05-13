@@ -11,6 +11,7 @@ function CreateProduct() {
   const [salePrice, setSalePrice] = useState("");
   const [ragulerPrice, setRagulerPrice] = useState("");
   const [slug, setSlug] = useState("");
+  
 
   const [image, setImage] = useState({});
 

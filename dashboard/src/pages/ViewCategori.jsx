@@ -15,6 +15,7 @@ function ViewCategori() {
       }
       const arr = [];
       const data = await response.json();
+
       data.map((item) => {
         arr.push({
           key: item._id,

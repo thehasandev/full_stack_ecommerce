@@ -1,6 +1,7 @@
 const balnkInputValidator = require("../helpers/blankInputValidator");
 const ProductSchema = require("../model/productSchema");
 const createProductController = async (req, res) => {
+  console.log(req.file);
   const { name, discription, salePrice, ragulerPrice ,slug} = req.body;
   const exjectinName = await ProductSchema.findOne({ name: name });
   if (exjectinName) {

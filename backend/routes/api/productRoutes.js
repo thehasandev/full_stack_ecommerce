@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
   })
 const upload = multer({ storage: storage })
 
-_.post("/createcategory",createCategoryControler)
+_.post("/createcategory",upload.single('avatar'),createCategoryControler)
 _.post("/createsubcategory",createSubCategoriControler)
 _.get("/allcategory",allcategorisControler)
 _.get("/allsubcategory",allSubcategorisControler)
