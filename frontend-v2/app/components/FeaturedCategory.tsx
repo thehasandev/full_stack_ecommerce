@@ -1,9 +1,10 @@
-import React from "react";
 import Container from "./Container";
-import ProductCategoris from "./ProductCategoris";
 import Flex from "./Flex";
+import { getData } from "../utils/fetchData";
 
-function FeaturedCategori() {
+async function FeaturedCategori() {
+  const data = await getData("/product/allcategory");
+
   return (
     <section className="my-12">
       <Container>
@@ -13,21 +14,24 @@ function FeaturedCategori() {
         <h2 className="text-center font-roboto font-medium text-base mb-8 text-primary">
           Get Your Desired Product from Featured Category!
         </h2>
-        <Flex className="gap-5 flex-wrap">
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
-          <ProductCategoris />
+
+        <Flex className="gap-6 flex-wrap">
+          {data.map((item: any, index: any) => (
+            <div
+              key={index}
+              className="w-44 bg-white shadow-md py-4 rounded-md"
+            >
+              <Flex className="justify-center">
+                <img
+                  src={`http://localhost:8000${item.image}`}
+                  alt="categori"
+                />
+              </Flex>
+              <p className="font-pop mt-2.5 text-base font-semibold text-primary text-center">
+                {item.name}
+              </p>
+            </div>
+          ))}
         </Flex>
       </Container>
     </section>
