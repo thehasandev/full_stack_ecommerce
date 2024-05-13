@@ -3,9 +3,10 @@ import Flex from "./Flex";
 import { getData } from "../utils/fetchData";
 import Link from "next/link";
 
-async function FeaturedCategori() {
-  const data = await getData("/product/allcategory");
-
+interface featureCategorisProps {
+  data: any
+}
+async function FeaturedCategori({data}:featureCategorisProps) {
   return (
     <section className="my-12">
       <Container>

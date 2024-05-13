@@ -3,7 +3,10 @@ import Product from "./Product";
 import Container from "./Container";
 import Flex from "./Flex";
 
-function FeatureProduct() {
+interface featureProductProps {
+  data: any;
+}
+function FeatureProduct({ data }: featureProductProps) {
   return (
     <section className="my-8">
       <Container>
@@ -13,15 +16,10 @@ function FeatureProduct() {
         <h2 className="text-center font-roboto font-medium text-base mb-8 text-primary">
           Check & Get Your Desired Product!
         </h2>
-        <Flex className="flex-wrap gap-y-6 justify-between">
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+        <Flex className="flex-wrap gap-8">
+          {data.map((item: any, index: any) => (
+            <Product key={index} data={item}/>
+          ))}
         </Flex>
       </Container>
     </section>
