@@ -7,50 +7,12 @@ import Flex from "./Flex";
 import { HiMiniUser } from "react-icons/hi2";
 import { IoSearchSharp } from "react-icons/io5";
 import Link from "next/link";
-const _links = [
-  {
-    name: "Desktop",
-    href: "desktop",
-  },
-  {
-    name: "Laptop",
-    href: "laptop",
-  },
-  {
-    name: "Component",
-    href: "component",
-  },
-  {
-    name: "Monitor",
-    href: "monitor",
-  },
-  {
-    name: "UPS",
-    href: "uPS",
-  },
-  {
-    name: "Phone",
-    href: "phone",
-  },
-  {
-    name: "Tablet",
-    href: "tablet",
-  },
-  {
-    name: "Office Equipment",
-    href: "office Equipment",
-  },
-  {
-    name: "Security",
-    href: "security",
-  },
-  {
-    name: "Networking",
-    href: "networking",
-  },
-];
 
-function Navbar() {
+interface navBarProps {
+  data: any;
+}
+
+function Navbar({ data }: navBarProps) {
   return (
     <section className="fixed z-10 w-full top-0">
       <div className="bg-primary py-3">
@@ -108,12 +70,12 @@ function Navbar() {
       <nav className="bg-slate-100 py-2">
         <Container>
           <ul className="flex justify-between items-center">
-            {_links.map((item, index) => (
+            {data.map((item: any, index: any) => (
               <li
                 key={index}
-                className="font-roboto font-medium text-base text-primary cursor-pointer hover:text-orange"
+                className="font-roboto font-medium text-base capitalize text-primary cursor-pointer hover:text-orange"
               >
-                <Link href={item.href}>{item.name}</Link>
+                <Link href={item.name}>{item.name}</Link>
               </li>
             ))}
           </ul>

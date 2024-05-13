@@ -1,6 +1,7 @@
 import Container from "./Container";
 import Flex from "./Flex";
 import { getData } from "../utils/fetchData";
+import Link from "next/link";
 
 async function FeaturedCategori() {
   const data = await getData("/product/allcategory");
@@ -22,13 +23,15 @@ async function FeaturedCategori() {
               className="w-44 bg-white shadow-md py-4 rounded-md"
             >
               <Flex className="justify-center">
-                <img
-                  src={`http://localhost:8000${item.image}`}
-                  alt="categori"
-                />
+                <Link href={item.name.toLowerCase()}>
+                  <img
+                    src={`http://localhost:8000${item.image}`}
+                    alt="categori"
+                  />
+                </Link>
               </Flex>
-              <p className="font-pop mt-2.5 text-base font-semibold text-primary text-center">
-                {item.name}
+              <p className="font-pop mt-2.5 text-base font-semibold text-primary text-center capitalize">
+                <Link href={item.name.toLowerCase()}>{item.name}</Link>
               </p>
             </div>
           ))}
