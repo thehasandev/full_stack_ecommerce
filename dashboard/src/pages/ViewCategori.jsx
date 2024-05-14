@@ -1,8 +1,22 @@
 import { Space, Table } from "antd";
 import { useState } from "react";
+import { Modal } from "antd";
 import axios from "axios";
 function ViewCategori() {
   const [categori, setCategori] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [findName, setFindName] = useState("");
+
+  const handleEdit = (item) => {
+    setOpen(true);
+    setFindName(item.name);
+    setName(item.name);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   const datafetch = async () => {
     try {
@@ -44,6 +58,30 @@ function ViewCategori() {
     });
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/product/editcategory",
+        {
+          findName: findName,
+          updateName: name,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      const result = await response.json();
+      console.log(result);
+  
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  };
+
   const columns = [
     {
       title: "Id",
@@ -77,8 +115,28 @@ function ViewCategori() {
       key: "action",
       render: (_) => (
         <Space size="middle">
-          <button>Edit</button>
+          <button onClick={() => handleEdit(_)}>Edit</button>
           <button onClick={() => handleDelete(_)}>Delete</button>
+          <>
+            <Modal title="Edit Catergori" open={open} onCancel={handleCancel}>
+              <form onSubmit={handleSubmit}>
+                <h1>Create Categori</h1>
+                <div style={{ marginBottom: "10px" }}>
+                  <label>Name*</label>
+                  <br />
+                  <input
+                    value={name}
+                    type="text"
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    style={{ width: "100%", padding: "4px", marginTop: "5px" }}
+                  />
+                </div>
+
+                <button type="submit">Submit</button>
+              </form>
+            </Modal>
+          </>
         </Space>
       ),
     },
