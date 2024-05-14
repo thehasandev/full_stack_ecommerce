@@ -7,6 +7,7 @@ const createProductController = require('../../controllers/createProductControle
 const multer  = require('multer')
 const allProductController = require('../../controllers/allProductControler')
 const addVarientControler = require('../../controllers/addvarientControler')
+const deleteCategoryContorllers = require('../../controllers/deleteCategoriControlers')
 
 const _ = express.Router()
 
@@ -24,6 +25,7 @@ const upload = multer({ storage: storage })
 _.post("/createcategory",upload.single('avatar'),createCategoryControler)
 _.post("/createsubcategory",createSubCategoriControler)
 _.get("/allcategory",allcategorisControler)
+_.delete("/deletecategory",deleteCategoryContorllers)
 _.get("/allsubcategory",allSubcategorisControler)
 _.post("/createproduct",upload.single('avatar'),createProductController)
 _.post("/addvarient",upload.single('avatar'),addVarientControler)

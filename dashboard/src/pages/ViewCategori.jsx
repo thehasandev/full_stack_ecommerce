@@ -1,7 +1,9 @@
 import { Space, Table } from "antd";
 import { useState } from "react";
+import axios from "axios";
 function ViewCategori() {
   const [categori, setCategori] = useState([]);
+
   const datafetch = async () => {
     try {
       const response = await fetch(
@@ -30,6 +32,18 @@ function ViewCategori() {
     }
   };
   datafetch();
+
+  const handleDelete = async (item) => {
+    axios.delete("http://localhost:8000/api/v1/product/deletecategory", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        categoryName: item.name,
+      },
+    });
+  };
+
   const columns = [
     {
       title: "Id",
@@ -61,10 +75,10 @@ function ViewCategori() {
     {
       title: "Action",
       key: "action",
-      render: () => (
+      render: (_) => (
         <Space size="middle">
-          <a>Edit</a>
-          <a>Delete</a>
+          <button>Edit</button>
+          <button onClick={() => handleDelete(_)}>Delete</button>
         </Space>
       ),
     },
