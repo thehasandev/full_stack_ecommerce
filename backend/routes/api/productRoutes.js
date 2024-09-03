@@ -25,12 +25,13 @@ const upload = multer({ storage: storage });
 
 _.post("/createcategory", upload.single("avatar"), createCategoryControler);
 _.post("/createsubcategory", createSubCategoriControler);
-_.get("/allcategory", allcategorisControler);
-_.delete("/deletecategory", deleteCategoryContorllers);
 _.post("/editcategory",upload.single("avatar"), editCategoryContorllers);
-_.get("/allsubcategory", allSubcategorisControler);
-_.post("/createproduct", upload.single("avatar"), createProductController);
 _.post("/addvarient", upload.single("avatar"), addVarientControler);
+_.post("/createproduct", upload.single("avatar"), createProductController);
+
+_.get("/allcategory", allcategorisControler);
+_.get("/allsubcategory", allSubcategorisControler);
 _.get("/allproduct", allProductController);
+_.delete("/deletecategory", deleteCategoryContorllers);
 
 module.exports = _;
